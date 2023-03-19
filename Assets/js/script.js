@@ -25,10 +25,21 @@ $(function () {
   //
   function colorChange() {
     let currentTime = dayjs().hour()
-    console.log(currentTime)
-    $(".time-block").each(function(){
-      let blockTime = $(this).attr
-      // if block time is past present & else is future
+    currentTime = 12;
+    $(".time-block").each(function() {
+      const blockId = $(this).attr("id");
+      const blockTime = parseInt(blockId.replace('hour-',''));
+      console.log("BLOCKTIME")
+      console.log(blockTime);
+      console.log("CURRENTIME")
+      console.log(currentTime);
+      if (currentTime > blockTime) {
+        $(this).addClass("past");
+      } else if (currentTime === blockTime) {
+        $(this).addClass("present");
+      } else {
+        $(this).addClass("future");
+      }
     })
   }
   colorChange()
